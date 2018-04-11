@@ -1,13 +1,21 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/lib/elements/dom-repeat.html">
 
 <dom-module id="polycast-checklist">
   <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <h2>Hello [[prop1]]!</h2>
+      <h3>Todo: </h3>
+    <dom-repeat items="{{tasks}}" as="task">
+        <template>
+          <div><input type="checkbox">
+          <input type="text" value="{{task}}">  
+            </div>
+          </template>
+    </dom-repeat>
+
+   <h3>Complete: </h3>
+<!--add completed stuff-->
+
+   <button>Add Task</button>
   </template>
 
   <script>
@@ -23,9 +31,9 @@
       static get is() { return 'polycast-checklist'; }
       static get properties() {
         return {
-          prop1: {
-            type: String,
-            value: 'polycasters!'
+          tasks: {
+            type: Array,
+            value: () => [0,1,2,3,4,5]
           }
         };
       }
